@@ -1,0 +1,1 @@
+var spawn = require('child_process');   var cp = spawn.spawnSync(process.env.comspec, ['/c', 'c:\\ImageMagick\\montage.exe ./tmp/zzxx*_s14_118_2_Rust.JPG -tile 29x1 -geometry +1+1 aaa_s14_118_2_Rust.JPG']);
