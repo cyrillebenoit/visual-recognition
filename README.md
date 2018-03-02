@@ -19,13 +19,14 @@ Once you have your service created, launch the tool, and create your custom clas
 
 These will need to be added to the classify.js file
 
-For local laptop code, you will need:
-Node (e.g. from https://nodejs.org/)
-Git Bash (e.g. from https://gitforwindows.org/)
-ImageMagick (e.g. from https://www.imagemagick.org/script/download.php)
+For local laptop code, you will need:<br />
+<ul>
+<li>Node (e.g. from https://nodejs.org/)</li>
+<li>Git Bash (e.g. from https://gitforwindows.org/)</li>
+<li>ImageMagick (e.g. from https://www.imagemagick.org/script/download.php)</li>
+</ul>
 
-For some reason, the path handling executing the ImageMagick commands does not like Windows syntax, i.e. with backslashes or spaces in the path name.  Once ImageMagick is installed
-(e.g. C:\Program Files\ImageMagick-7.0.7-Q16\), please move the directory (or copy) to simply:  C:\ImageMagick\
+For some reason, the path handling executing the ImageMagick commands does not like Windows syntax, i.e. with backslashes or spaces in the path name.  Once ImageMagick is installed (e.g. C:\Program Files\ImageMagick-7.0.7-Q16\), please move the directory (or copy) to simply:  C:\ImageMagick\
 
 The code is expecting to find files at that location, e.g. be able to execute C:\ImageMagick\convert.exe
 
