@@ -31,28 +31,22 @@ The code is expecting to find files at that location, e.g. be able to execute C:
 
 Once you have the scripts from this Github repository in a folder of your choice (e.g. your folder contains split.js, classify.js etc), please start a Git bash shell in that directory and install the required Node modules:
 
-<code>
-npm install fs</code><br />
+<code>npm install fs</code><br />
 <code>npm install child_process</code><br />
-<code>npm install inquirer<br>
-npm install watson-developer-cloud<br>
-npm install csv<br>
-</code>
+<code>npm install inquirer</code><br />
+<code>npm install watson-developer-cloud</code><br />
+<code>npm install csv</code><br />
 
 You should be able to execute the JavaScript code within Git Bash by typing:
 
-<code>
-node filename.js<br>
-</code>
+<code>node filename.js</code><br />
 
 e.g. node split.js
 
 There are also two utility shell scripts to assist you if you wish.  These can also be called from within Git Bash as follows:
 
-<code>
-sh predupe.sh<br>
-sh number.sh<br>
-</code>
+<code>sh predupe.sh</code><br />
+<code>sh number.sh</code><br />
 
 as necessary.
 
