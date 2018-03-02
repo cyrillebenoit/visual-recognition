@@ -32,8 +32,8 @@ The code is expecting to find files at that location, e.g. be able to execute C:
 Once you have the scripts from this Github repository in a folder of your choice (e.g. your folder contains split.js, classify.js etc), please start a Git bash shell in that directory and install the required Node modules:
 
 <code>
-<p>npm install fs</p>
-<p>npm install child_process</p>
+npm install fs<br />
+npm install child_process<br />
 npm install inquirer<br>
 npm install watson-developer-cloud<br>
 npm install csv<br>
