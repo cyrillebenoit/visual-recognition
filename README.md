@@ -7,13 +7,13 @@ There are a number of operating system commands used throughout these scripts th
 
 Pre-requisites:
 
-Firstly, you will need a Bluemix account (IBM Cloud).  Register and log in at bluemix.net
+Firstly, you will need a Bluemix account (IBM Cloud).  Register and log in at bluemix.net.
 You will need to create a Watson Visual Recognition service from the catalogue.  This is widely available in most Bluemix regions.
 You will almost certainly need the 'Standard' version of this service (not 'Lite').  The lite version does not allow you to retrain and update classifiers.
 Please be aware that the standard version does involve charges to your account.
 IBMers might wish to look at:  https://nlu-requests.mybluemix.net
 
-Once you have your service created, launch the tool, and create your custom classifier with its two classes.  Make a note of both your API key and the classifer ID.
+Once you have your service created, launch the tool, and create your custom classifier with its two classes.  Make a note of both your API key and the classifier ID.
 These will need to be added to the classify.js file
 
 For local laptop code, you will need:
