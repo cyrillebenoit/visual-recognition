@@ -8,12 +8,15 @@ There are a number of operating system commands used throughout these scripts th
 <h2>Pre-requisites:</h2>
 
 Firstly, you will need a Bluemix account (IBM Cloud).  Register and log in at bluemix.net.
+
 You will need to create a Watson Visual Recognition service from the catalogue.  This is widely available in most Bluemix regions.
 You will almost certainly need the 'Standard' version of this service (not 'Lite').  The lite version does not allow you to retrain and update classifiers.
-Please be aware that the standard version does involve charges to your account.
+Please be aware that <b>the standard version does involve charges to your account</b>.
+
 IBMers might wish to look at:  https://nlu-requests.mybluemix.net
 
 Once you have your service created, launch the tool, and create your custom classifier with its two classes.  Make a note of both your API key and the classifier ID.
+
 These will need to be added to the classify.js file
 
 For local laptop code, you will need:
@@ -29,33 +32,39 @@ The code is expecting to find files at that location, e.g. be able to execute C:
 Once you have the scripts from this Github repository in a folder of your choice (e.g. your folder contains split.js, classify.js etc), please start a Git bash shell in that directory and install the required Node modules:
 
 <code>
-npm install fs
-npm install child_process
-npm install inquirer
-npm install watson-developer-cloud
-npm install csv
+npm install fs<br>
+npm install child_process<br>
+npm install inquirer<br>
+npm install watson-developer-cloud<br>
+npm install csv<br>
 </code>
 
 You should be able to execute the JavaScript code within Git Bash by typing:
 
-node filename.js
+<code>
+node filename.js<br>
+</code>
 
 e.g. node split.js
 
 There are also two utility shell scripts to assist you if you wish.  These can also be called from within Git Bash as follows:
 
-sh predupe.sh
-sh number.sh
+<code>
+sh predupe.sh<br>
+sh number.sh<br>
+</code>
 
 as necessary.
 
-To classify an image:
+<h2>To classify an image:</h2>
 The toolchain acts as follows.
 
 Firstly, you should have an image in your directory, e.g. dogs-playing-poker.png
-Make sure you have a Bluemix account, Visual Recognition service, and custom classifer created.
 
-Before you use the toolchain, edit the file classify.js, and change the parameters on lines 17 and 49 to be your own API key and own classifer ID.  Make sure you use the specific classifier ID returned by Watson.
+Make sure you have a Bluemix account, Visual Recognition service, and custom classifier created.
+
+Before you use the toolchain, edit the file classify.js, and change the parameters on lines 17 and 49 to be your own API key and own classifier ID.  Make sure you use the specific classifier ID returned by Watson.
+
 E.g. if you create a classifier called 'Dogspoker', Watson will append a set of numbers to make it unique to you, e.g. 'Dogspoker_123456'.  When editing classify.js, use the value with the appended numbers on line 49.
 
 1. Capture input variables [Executed in Git Bash with 'node split.js']
@@ -70,6 +79,7 @@ The file merge.js is custom created by the code (in classify.js) as it contains 
 The final merged image is the same name as your original image but prepended with aaa_
 
 Eg. dogs-playing-poker.png becomes aaa_dogs-playing-poker.png, for ease of finding in your directory.
+
 All temporary files are stored in a subfolder called 'tmp' and can be deleted if desired by executing 'node clean.js' within a Git Bash shell (run from the parent directory, i.e. where your original image is located).
 
 I make no claims to being a professional programmer, but having developed these these scripts, they have proved useful in demonstrating the service and hope you find them of interest and possibly of some help.
