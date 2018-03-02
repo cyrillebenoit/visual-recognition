@@ -28,11 +28,13 @@ The code is expecting to find files at that location, e.g. be able to execute C:
 
 Once you have the scripts from this Github repository in a folder of your choice (e.g. your folder contains split.js, classify.js etc), please start a Git bash shell in that directory and install the required Node modules:
 
+<code>
 npm install fs
 npm install child_process
 npm install inquirer
 npm install watson-developer-cloud
 npm install csv
+</code>
 
 You should be able to execute the JavaScript code within Git Bash by typing:
 
