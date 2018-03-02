@@ -5,7 +5,7 @@ Scripts for analysing images using the Watson Visual Recognition Service.
 These scripts were developed as a demonstration of processing images and classifying them against custom classifiers on the Watson Visual Recognition service.
 There are a number of operating system commands used throughout these scripts that execute under Node.js, and are designed for the Windows operating system.
 
-Pre-requisites:
+<h2>Pre-requisites:</h2>
 
 Firstly, you will need a Bluemix account (IBM Cloud).  Register and log in at bluemix.net.
 You will need to create a Watson Visual Recognition service from the catalogue.  This is widely available in most Bluemix regions.
