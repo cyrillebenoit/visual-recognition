@@ -3,11 +3,9 @@
 // V1 - 2 Mar 2018
 
 var fs = require('fs');
-var spawn = require('child_process').spawnSync;
-var exec = require('child_process').exec;
 var inquirer = require('inquirer');
 var path = require('path');
-var im = require('imagemagick');
+var im = require('simple-imagemagick');
 var mkdirp = require('mkdirp');
 
 var config = require('./config.json');
@@ -25,13 +23,13 @@ var questions = [
     type: 'input',
     name: 'cols',
     message: 'Number of columns to split the image into',
-    default: 5
+    default: 10
   },
   {
     type: 'input',
     name: 'rows',
     message: 'Number of rows to split the image into',
-    default: 5
+    default: 10
   },
   {
     type: 'input',
