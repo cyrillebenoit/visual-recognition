@@ -2,7 +2,7 @@
 // Rory Costello - rory.costello@au1.ibm.com
 // V1 - 2 Mar 2018
 
-var watson = require('watson-developer-cloud');
+var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 var fs = require('fs');
 var spawn = require('child_process');
 var exec = require('child_process').exec;
@@ -12,8 +12,8 @@ var path = require('path');
 var im = require('simple-imagemagick');
 var config = require('./config.json');
 
-var visual_recognition = watson.visual_recognition({
-  api_key: process.env.API_KEY || config.api_key, // ** UPDATE ME ** - Change API key for your own Watson Vision instance
+var visual_recognition = new VisualRecognitionV3({
+  api_key: process.env.API_KEY || config.api_key,
   version: 'v3',
   version_date: '2016-05-20'
 });
@@ -152,15 +152,13 @@ fs.readFile(path.join(tmpDir, config.varfile), 'utf8', function(err, data) {
       // Commented out, but this next line would create a 'dummy' image fragment with a light purple shade to indicate a null image was returned
       //       var child = spawn.spawnSync(process.env.comspec, ['/c', 'c:\\ImageMagick\\convert.exe '+res.images[0].image+' -fill purple -colorize 10% -shave 1x1 -bordercolor white -border 1 zz'+res.images[0].image]);
       }
-
     });
     ;
   } // end For loop
 });
 
 var merge = function(arr) {
-  operationsCompleted++;
-  if (operationsCompleted < arr[1] * arr[2]) {
+  if (++operationsCompleted < arr[1] * arr[2]) {
     return;
   }
   console.log("All fragments submitted to Watson Visual Recognition.  On completion, please enter on a command line:");
@@ -175,12 +173,11 @@ var merge = function(arr) {
       arr[1] + "x" + arr[2],
       "-geometry",
       "+1+1",
-      "aaa_" + path.basename(arr[0])
+      path.join(path.dirname(arr[0]), "aaa_" + path.basename(arr[0]))
     ],
     function(err, stdout) {
       if (err)
         throw err;
-      console.log('stdout:', stdout);
-      console.log("Image processing job submitted to Watson Visual Recognition Service, results will be returned shortly...");
+      console.log("The coloured image was successfully created at " + path.join(path.dirname(arr[0]), "aaa_" + path.basename(arr[0])));
     });
 }
