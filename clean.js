@@ -1,14 +1,27 @@
-var spawn = require('child_process').spawn;
+var fs = require('fs');
+var path = require('path');
+var mkdirp = require('mkdirp');
 
 console.log("Deleting working image fragments");
-var cp = spawn(process.env.comspec, ['/c', 'del ./tmp/xx*.*']);
-var cp = spawn(process.env.comspec, ['/c', 'del ./tmp/zzxx*.*']);
-var cp = spawn(process.env.comspec, ['/c', 'del ./tmp/captioned-*.*']);
+tmpDir = path.join(path.resolve(), "tmp");
+var pattern = /(zz)?(xx).*\..+/;
+mkdirp(tmpDir, err => {
+  fs.readdir(tmpDir, (err, fileNames) => {
+    if (err)
+      throw err;
 
-cp.stdout.on("data", function(data) {
-    console.log(data.toString());
-});
+    // iterate through the found file names
+    for (const name of fileNames) {
 
-cp.stderr.on("data", function(data) {
-    console.error(data.toString());
+      // if file name matches the pattern
+      if (pattern.test(name)) {
+        // try to remove the file and log the result
+        fs.unlink(path.join(tmpDir, name), (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      }
+    }
+  });
 });

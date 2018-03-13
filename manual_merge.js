@@ -1,15 +1,19 @@
 var path = require('path');
 const im = require('simple-imagemagick');
+var fs = require('fs');
+var config = require('./config.json');
 
-module.exports = (arr, operations) => {
-  if (operations < arr[1] * arr[2]) {
-    return;
+tmpDir = path.join(path.resolve(), "tmp");
+
+fs.readFile(path.join(tmpDir, config.varfile), 'utf8', function(err, data) {
+  if (err) {
+    return console.log(err);
   }
-  console.log("All fragments submitted to Watson Visual Recognition.  On completion, please enter on a command line:");
-  console.log("node merge.js");
-  console.log("Your final result image will be a new file called 'aaa_" + path.basename(arr[0]) + "'");
 
-  // build output image
+  var arr = data.split(",");
+  console.log("Parameters retrieved from temporary file:");
+  console.log(data);
+
   im.montage(
     [
       path.join(tmpDir, 'zzxx*_' + path.basename(arr[0])),
@@ -24,4 +28,4 @@ module.exports = (arr, operations) => {
         throw err;
       console.log("The coloured image was successfully created at " + path.join(path.dirname(arr[0]), "aaa_" + arr[1] + "x" + arr[2] + "_" + path.basename(arr[0])));
     });
-};
+});

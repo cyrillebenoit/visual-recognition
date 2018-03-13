@@ -1,1 +1,0 @@
-cd tmp; for i in xx*; do echo $i; c:\\imagemagick\\convert.exe $i -fill purple -colorize 10% -shave 1x1 -bordercolor white -border 1 zz$i; done; cd ..
