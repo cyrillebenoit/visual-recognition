@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watson Visual Advisor</title>
+
+  <!-- Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.0.3/nouislider.min.css" rel="stylesheet">
+  <link href="./css/styles.css" rel="stylesheet">
+  <link href="/scripts/dropzone.css" rel="stylesheet">
+  <script src="/scripts/dropzone.js" type="text/javascript"></script>
+  <script src="./js/http.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.0.3/nouislider.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>Welcome.</h1>
+      <!-- <h1>Bienvenue.</h1> -->
+    </div>
+    <!-- STEP 1: SEND FILE -->
+    <div class="row">
+      <form id="my-dz" method="post" enctype="multipart/form-data" class="dropzone col-md-6 col-xs-12">
+      </form>
+    </div>
+
+    <!-- STEP 2: PROCESS IMAGE -->
+    <div id="result">
+      <div class="row">
+        <h2>Watson Visual Advisor sees:</h2>
+        <!-- <h2>Watson Visual Advisor voit :</h2> -->
+      </div>
+      <div class="row">
+        <div id="image-container" class="col-md-6 col-xs-12">
+          <img id="image" class="img-fluid" src="">
+          <div id="grid"></div>
+        </div>
+
+        <!--  STEP 2.1: ADJUST GRID -->
+        <div id="classifier-form" class="col-md-6 col-xs-12">
+          <div class="col-12 slider-container">
+            <div id="cols-slider"></div>
+            <!-- <div id="cols-value"></div> -->
+          </div>
+          <div class="col-12 slider-container">
+            <div id="rows-slider"></div>
+            <!-- <div id="rows-value"></div> -->
+          </div>
+          <form id="classify" class="col-12">
+            <button id="classify-button" type="button" onclick="classify()">Classify</button>
+          </form>
+        </div>
+
+        <!--  STEP 2.2: WAIT FOR ANSWER -->
+        <div id="spin-loader" class="col-md-6 col-xs-12">
+          <div class="loader">
+          </div>
+        </div>
+
+        <!--  STEP 2.3: SEE RESULTS -->
+        <div id="image-response" class="col-md-6 col-xs-12">
+          <img id="image2" class="img-fluid" src="">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/script.js" type="text/javascript"></script>
+
+</html>

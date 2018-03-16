@@ -1,5 +1,12 @@
 {
   "api_key": "",
   "classifier_id": "",
-  "varfile": ".vars"
+  "classes": [
+    {
+      "label": "NOK",
+      "colour": "red"
+    }
+  ],
+  "varfile": ".vars",
+  "comment on classes array": "colour and color both work :)"
 }
