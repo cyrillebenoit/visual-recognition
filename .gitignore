@@ -3,3 +3,4 @@ package-lock.json
 img/*
 tmp/*
 node_modules/*
+.idea/*

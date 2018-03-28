@@ -1,0 +1,9 @@
+---
+applications:
+- name: visual-recognition-grid
+  command: npm start
+  path: .
+  memory: 512M
+  instances: 1
+  env:
+    CLASSIFIER_ID: bouchonsBYTEL_163927582

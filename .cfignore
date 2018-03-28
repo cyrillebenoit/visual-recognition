@@ -1,0 +1,9 @@
+.git/*
+img/*
+tmp/*
+node_modules/*
+.config.json
+.gitignore
+.gitattributes
+manual_merge.js
+cli.js
