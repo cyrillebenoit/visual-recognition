@@ -49,6 +49,6 @@ Two options here:
 
 The final merged image is the same name as your original image but prepended with aaa_
 
-All temporary files are stored in a subfolder called 'tmp' and can be deleted if desired by executing 'node clean' or by classifying another image.
+All temporary files are stored in a subfolder called 'tmp' and can be deleted if desired by executing `node clean` or by classifying another image.
 
 Credits for the logic of this application goes to Rory Costello from who I got the [initial code](https://github.com/rorycostelloibm/visual-recognition) and ported it to be usable on different OS as well as through a web app, and with potentially less or more than 2 colors.

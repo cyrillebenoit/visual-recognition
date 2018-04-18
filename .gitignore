@@ -4,3 +4,4 @@ img/*
 tmp/*
 node_modules/*
 .idea/*
+npm-debug.log

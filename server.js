@@ -7,7 +7,7 @@ var send = multer({
 });
 let upload = require("./upload.js");
 
-let port = process.env.PORT || 8000;
+let port = process.env.PORT || 8080;
 
 app.use('/scripts', express.static(__dirname + '/node_modules/dropzone/dist/'));
 app.use('/img', express.static(__dirname + '/img/'));

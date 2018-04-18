@@ -21,8 +21,8 @@ function classify(params, callback) {
 
     visual_recognition.classify(params, (err, res) => {
         if (err) {
-            console.log(err['code']);
-            if(err['code'] === 400 || err['code'] === 500 ) {
+            console.log('Received error ' + err['code']);
+            if (err['code'] === 400 || err['code'] === 500) {
                 console.log('Could not classify ' + params.fragname);
                 classify(params, callback);
             }
@@ -58,18 +58,12 @@ function classify(params, callback) {
                 im.convert(
                     [
                         path.join(tmpDir, path.basename(res.images[0].image)),
-                        // '-shave',
-                        // '1x1',
-                        // '-bordercolor',
-                        // 'white',
-                        // '-border',
-                        // '1',
                         path.join(tmpDir, 'zz' + path.basename(res.images[0].image))
                     ],
                     function (err, stdout) {
                         if (err)
                             throw err;
-                        merge(arr, ++operationsCompleted, callback)
+                        merge(arr, ++operationsCompleted, callback);
                     });
             } else {
                 let shadecolor = currentClass.color || currentClass.colour;
@@ -87,18 +81,12 @@ function classify(params, callback) {
                             shadecolor,
                             '-colorize',
                             shadep + '%',
-                            // '-shave',
-                            // '1x1',
-                            // '-bordercolor',
-                            // 'white',
-                            // '-border',
-                            // '1',
                             path.join(tmpDir, 'zz' + path.basename(res.images[0].image))
                         ],
                         function (err, stdout) {
                             if (err)
                                 throw err;
-                            merge(arr, ++operationsCompleted, callback)
+                            merge(arr, ++operationsCompleted, callback);
                         });
                 } else {
                     // Convert but do not apply colour.  Still need to draw white box around image
@@ -106,18 +94,12 @@ function classify(params, callback) {
                     im.convert(
                         [
                             path.join(tmpDir, path.basename(res.images[0].image)),
-                            // '-shave',
-                            // '1x1',
-                            // '-bordercolor',
-                            // 'white',
-                            // '-border',
-                            // '1',
                             path.join(tmpDir, 'zz' + path.basename(res.images[0].image))
                         ],
                         function (err, stdout) {
                             if (err)
                                 throw err;
-                            merge(arr, ++operationsCompleted, callback)
+                            merge(arr, ++operationsCompleted, callback);
                         });
                 }
             }
@@ -129,7 +111,7 @@ function classify(params, callback) {
 }
 
 module.exports = (callback) => {
-    operationsCompleted = 0
+    operationsCompleted = 0;
     visual_recognition = new VisualRecognitionV3({
         api_key: process.env.API_KEY || config.api_key,
         version: 'v3',
@@ -152,33 +134,21 @@ module.exports = (callback) => {
 
 
         console.log("Submitting fragments to Watson Visual Recognition...");
-        let i,
-            fragid,
-            fragname,
-            maxfrags;
 
-        maxfrags = arr[1] * arr[2]; // cols * rows
-        for (i = 0; i < maxfrags; i++) {
-            fragid = ("00" + i).slice(-3);
+        let maxfrags = arr[1] * arr[2]; // cols * rows
+        for (let i = 0; i < maxfrags; i++) {
+            let fragid = ("00" + i).slice(-3);
 
-            fragname = path.join(tmpDir, "xx" + fragid + "_" + path.basename(arr[0]));
+            let fragname = path.join(tmpDir, "xx" + fragid + "_" + path.basename(arr[0]));
 
             let params = {
                 images_file: fs.createReadStream(fragname),
-                // owners: ['me'],
                 classifier_ids: [process.env.CLASSIFIER_ID || config.classifier_id],
                 threshold: 0.05
-                /* A comment on the threshold value
-                  Although this is not a mandatory parameter, the code is expecting two classes to be returned in the JSON from Watson
-                  It works out which class scores higher, then shades the image fragment against that classes designated colour
-                  Therefore it works best to set this threshold value very low to ensure two classes are returned
-                  In practice, the Watson Visual Recognition service often classifies negative images with range 0 - 0.1
-                  The variable shade_threshold set above is what the code actually uses to determine if a colour shading should be applied or not
-                */
             };
 
             params.fragname = fragname;
             classify(params, callback);
         }
     });
-}
+};
