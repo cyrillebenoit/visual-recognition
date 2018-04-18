@@ -6,7 +6,7 @@
 - [Scope](#scope)
 - [Training](#training)
 - [Run the app](#run-the-app)
-- [Split your images into fragments](#split)
+- [Split your images into fragments](#split-images)
 - [Potential improvements](#potential-improvements)
 
 ## Prerequisites
