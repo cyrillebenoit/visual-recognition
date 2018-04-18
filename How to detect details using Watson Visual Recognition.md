@@ -1,13 +1,12 @@
 # How to detect details using Watson Visual Recognition
 
-
 ## Overview
 
 - [Prerequisites](#prerequisites)
 - [Scope](#scope)
 - [Training](#training)
-- [Usage](#usage)
-- [Run the app](#runtheapp)
+- [Run the app](#run-the-app)
+- [Split your images into fragments](#split)
 - [Potential improvements](#potential-improvements)
 
 ## Prerequisites
@@ -34,39 +33,48 @@ I strongly recommend the use of a negative classifier for unrelevant fragments o
 
 Your initial training datasets should contain between 15 and 25 pictures.
 
-## Usage
-
-1.  Open the app in your browser
-2.  Choose your file
-3.  Adjust the grid
-4.  Watch the results
-
 ## Run the app
 
-### Locally
+### A. Locally
 
 - You can run the app locally using [npm](https://nodejs.org/).
 - Clone the [GitHub repository](https://github.com/cyrillebenoit/visual-recognition).
 - Open a terminal in said directory and run `npm install`.
 - Copy `.config.json` and rename it `config.json`.
-- Edit this file so it fits your 
+- Edit it and change :
+    1. Watson Visual Recognition API key
+    2. Classifier name
+    3. Classes you want to display on the final image
+- Run `npm start`
 
-### On IBM Cloud
+Your app is now running on [localhost:8080](localhost:8080).
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/cyrillebenoit/visual-recognition)
+### B. On IBM Cloud
 
+**This is not the recommended way to use the app for now. It is not designed to be used in a production environment.**
 
+You need to have the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) installed.
 
-## Example (playing cards)
+- Clone the [GitHub repository](https://github.com/cyrillebenoit/visual-recognition).
+- Copy `.config.json` and rename it `config.json`.
+- Edit it and change :
+    1. Watson Visual Recognition API key
+    2. Classifier name
+    3. Classes you want to display on the final image
+- Open a terminal and run `cf push`. 
 
-In this example, I'll use this app to detect the suit of a playing card.
+You may have to edit the manifest file and set an unique application name.
 
-First, I download the dataset from [this page](http://acbl.mybigcommerce.com/52-playing-cards/).
+## Split images
 
-Then, I split it into testing and training datasets and run the app locally with classifier_id or api_key set to null.
+It is possible to use the application to split an image without sending it to Watson. This is useful for making your own datasets.
 
-![config.json](md_images/splitconfig.jpg)
-
+You need to set the api key or classifier id to `null`.
 In this configuration, the file will be split and the initial image will be displayed when the process is over.
 You will find the fragments in the tmp folder.
 
+![config.json](md_images/splitconfig.jpg)
+
+## Potential Improvements
+
+This application can be improved by replacing the grid system by an object detection system, which would both make better fragments (the grid cannot always be adjusted) and prevent unrelevant fragments.
